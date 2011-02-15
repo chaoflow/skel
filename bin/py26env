@@ -1,0 +1,11 @@
+#!/bin/sh
+
+nixprofile="$HOME/.nix-profiles/py26"
+
+export PATH="$HOME/bin:$nixprofile/bin"
+export LD_LIBRARY_PATH="$nixprofile/lib"
+export NIX_LDFLAGS="-L $nixprofile/lib"
+export NIX_CFLAGS_COMPILE="-I $nixprofile/include"
+export PKG_CONFIG_PATH="$nixprofile/lib/pkgconfig"
+
+"$@"

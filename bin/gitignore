@@ -1,0 +1,20 @@
+#!/bin/sh
+
+function gitignore() {
+	ignore="$1"
+	wd="$2"
+	test -z "$ignore" && return 1
+	test -z "$wd" && wd=$(pwd)
+	if test -f "$wd/.gitignore" || test -d "$wd/.git"; then
+		echo "/$ignore" >> "$wd/.gitignore"
+		return 0
+	else
+		ignore="$(basename $wd)/$ignore"
+		wd="$(dirname $wd)"
+		gitignore "$ignore" "$wd"
+	fi
+}
+
+for x in "$@"; do
+	gitignore "$x"
+done

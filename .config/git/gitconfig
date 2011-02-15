@@ -1,0 +1,41 @@
+[core]
+	excludesfile = ~/.config/git/exclude
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+
+[diff]
+	renames = true
+
+[alias]
+	ai = add -i
+	ap = add -p
+	b = branch
+	cf = config
+	ci = commit -v
+	cia = commit -v -a
+	cam = commit -a -m
+	co = checkout
+	cp = cherry-pick
+	d = diff
+	dc = diff --cached
+	dw = diff --color-words
+	dwc = diff --cached --color-words
+	lf = log --follow
+	llf = log -p --follow
+	l = log
+	ll = log -p
+	lt = log trunk..
+	llt = log -p trunk..
+	lm = log master..
+	llm = log -p master..
+	resh1 = reset HEAD^
+	s = !git --no-pager status
+	sm = submodule
+	st = status
+	tl = tag -l
+
+[push]
+	default = current

@@ -1,0 +1,9 @@
+# XXX: Is it possible to generalize here?
+
+export EDITOR=vim
+export EMAIL=flo@chaoflow.net
+export FULLNAME="Florian Friesdorf"
+
+if which keychain >/dev/null 2>&1; then
+    eval `keychain --eval --quick --agents gpg,ssh id_dsa 0C45F083`
+fi

@@ -1,0 +1,26 @@
+alias buildout='LDFLAGS="-L/nix/var/nix/profiles/system/sw/lib" ./bin/buildout'
+
+alias grep='grep --color'
+alias gr='grep -R'
+alias gri='gr -i'
+
+alias hga='hg add'
+alias hgr='hg remove'
+alias hgc='hg commit'
+alias hgd='hg diff'
+alias hgs='hg status'
+alias hgp='hg push'
+alias hgmv='hg rename'
+
+alias ls='ls -F --color=auto'
+alias l='ls -1'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='la -l'
+alias lal='lla'
+
+alias p='pushd'
+
+alias rvahp='rsync -vaHP'
+
+alias sgit='sudo git'

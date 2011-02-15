@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+container=$1
+repo=$2
+
+cd $container
+for rev in `svn log --stop-on-copy --xml $repo |grep 'revision=' |cut -d'"' -f2`;
+	do true;
+done
+echo $rev

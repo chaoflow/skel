@@ -1,0 +1,54 @@
+Emacs*font:		-*-terminus-medium-*-*-*-16-*-*-*-*-*-iso10646-*
+
+Fig.inches:		false
+Fig.latexfonts:		true
+Fig.specialtext:	true
+
+URxvt*color0:           black
+URxvt*background:       black
+URxvt*color1:           #800000
+URxvt*color2:           #008000
+URxvt*color3:           #d0d090
+URxvt*color4:           #000080
+URxvt*color5:           #800080
+URxvt*color6:           #a6caf0
+URxvt*color7:           grey90
+URxvt*foreground:       grey90
+URxvt*color8:           #b0b0b0
+URxvt*color9:           #f08060
+URxvt*color10:          #60f080
+URxvt*color11:          #e0c060
+URxvt*color12:          #80c0e0
+URxvt*color13:          #f0c0f0
+URxvt*color14:          #c0d8f8
+URxvt*color15:          #e0e0e0
+URxvt*cursorColor:      #e0e080
+URxvt*underlineColor:	yellow
+URxvt*loginShell:	false
+URxvt*font:		-*-terminus-medium-*-*-*-16-*-*-*-*-*-iso10646-*
+URxvt*boldFont:		-*-terminus-bold-*-*-*-16-*-*-*-*-*-iso10646-*
+URxvt*italicFont:	xft:Bitstream Vera Sans Mono:italic:autohint=true
+URxvt*bolditalicFont:	xft:Bitstream Vera Sans Mono:bold:italic:autohint=true
+URxvt*saveLines:	10000
+URxvt*scrollBar:	false
+URxvt*scrollstyle:	plain
+URxvt*scrollTtyOutput:	false
+URxvt*scrollTtyKeypress:    true
+URxvt*shading:		15
+URxvt*transparent:	false
+//URxvt*fading:		30
+URxvt*keysym.Home:	\033[1~
+URxvt*keysym.End:	\033[4~
+// XXX: fix this
+//URxvt*keysym.M-u:	perl:mark-yank-urls:activate_mark_mode
+//URxvt*perl-lib:		/home/cfl/.urxvt
+//URxvt*perl-ext:		selection,mark-yank-urls
+URxvt*geometry:		80x25
+URxvt*urgentOnBell:	true
+
+xfig*background: grey80
+xfig*foreground: black
+xfig*startfontsize: 12
+xfig*startlatexFont: SansSerif
+xfig*startgridmode: 1
+xfig*splash: false

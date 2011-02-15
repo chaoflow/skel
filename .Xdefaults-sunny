@@ -1,0 +1,5 @@
+URxvt*background:       white
+URxvt*color7:           white
+URxvt*foreground:       black
+URxvt*cursorColor:      #e0e080
+URxvt*underlineColor:	yellow

@@ -1,0 +1,16 @@
+_
+*~
+.mr.developer.cfg
+.svn
+.swo
+.swp
+.*.swo
+.*.swp
+*.pyc
+*.pyo
+*.egg-info
+*.egg-link
+.installed.cfg
+\#*\#
+tags
+cscope.*

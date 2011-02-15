@@ -1,0 +1,29 @@
+# sourced by .zshrc and .bashrc
+
+# generic aliases
+if [ -f ~/.aliasrc ]; then
+    source ~/.aliasrc
+fi
+
+# environment variables
+if [ -f ~/.shenv ]; then
+    source ~/.shenv
+fi
+
+# if $HOME/tmp is a symbolic link, create the target if it does not exist
+if [ -L $HOME/tmp ]; then
+    tmpdir=`readlink $HOME/tmp`
+    test -d $tmpdir || mkdir $tmpdir
+    chmod 700 $tmpdir
+fi
+
+# check for a .nix-profile link and create .nix-profiles link if not exists
+if [ -L $HOME/.nix-profile -a ! -L $HOME/.nix-profiles ]; then
+    target=`readlink $HOME/.nix-profile`
+    ln `dirname $target` $HOME/.nix-profiles -s
+fi
+
+# make sure cache dir for buildout exists
+if [ ! -d $HOME/.cache/buildout ]; then
+    mkdir $HOME/.cache/buildout
+fi
