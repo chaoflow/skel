@@ -1,6 +1,8 @@
 #!/bin/sh
 
-nixprofile="$HOME/.nix-profiles/py26"
+# XXX: for some reason this variable is not set in here ?!
+NIX_USER_PROFILE_DIR=/nix/var/nix/profiles/per-user/cfl
+nixprofile=$NIX_USER_PROFILE_DIR/py26
 
 export PATH="$HOME/bin:$nixprofile/bin"
 export LD_LIBRARY_PATH="$nixprofile/lib"

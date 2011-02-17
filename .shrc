@@ -17,12 +17,6 @@ if [ -L $HOME/tmp ]; then
     chmod 700 $tmpdir
 fi
 
-# check for a .nix-profile link and create .nix-profiles link if not exists
-if [ -L $HOME/.nix-profile -a ! -L $HOME/.nix-profiles ]; then
-    target=`readlink $HOME/.nix-profile`
-    ln `dirname $target` $HOME/.nix-profiles -s
-fi
-
 # make sure cache dir for buildout exists
 if [ ! -d $HOME/.cache/buildout ]; then
     mkdir $HOME/.cache/buildout

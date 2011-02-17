@@ -1,3 +1,6 @@
 #!/bin/sh
 
-nix-env -p $HOME/.nix-profiles/"$@"
+# XXX: for some reason this variable is not set in here ?!
+NIX_USER_PROFILE_DIR=/nix/var/nix/profiles/per-user/cfl
+
+nix-env -p $NIX_USER_PROFILE_DIR/"$@"
