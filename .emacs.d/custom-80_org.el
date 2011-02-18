@@ -13,7 +13,8 @@
 ;; XXX: This should be separate from the variable that can be
 ;; customized and both together should form `org-agenda-files`
 ;; add .org files of all projects to agenda-files
-(setq-default org-agenda-files)
+;;(setq-default org-agenda-files)
+
 ;; (mapc
 ;;  (lambda (f)
 ;;    (add-to-list 'org-agenda-files f t)
