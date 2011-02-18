@@ -35,7 +35,7 @@
 
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
-(setq custom-file (concat dotfiles-dir "custom.el"))
+(setq custom-file (concat dotfiles-dir "custom-50_customized.el"))
 
 (require 'package)
 (dolist (source '(("technomancy" . "http://repo.technomancy.us/emacs/")
@@ -70,7 +70,10 @@
 (require 'starter-kit-js)
 
 (regen-autoloads)
-(load custom-file 'noerror)
+
+;; load all customization files in order. custom-50_customized.el
+;; contains settings set via customize.
+(mapc #'load (directory-files dotfiles-dir nil "^custom-.*[.]el$"))
 
 ;; You can keep system- or user-specific customizations here
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
