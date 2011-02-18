@@ -2,6 +2,8 @@
 
 cd
 
+pulseaudio --realtime --start &
+
 #nm-applet &
 ./bin/init_keyboard.sh &
 
