@@ -20,6 +20,13 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
+
+;; nixos specific load-path - needed here for now
+(add-to-list 'load-path "/nix/var/nix/profiles/system/sw/share/emacs/site-lisp/")
+(add-to-list 'load-path "/nix/var/nix/profiles/default/share/emacs/site-lisp/")
+(add-to-list 'load-path "~/.nix-profile/share/emacs/site-lisp/")
+
+
 ;; Load up ELPA, the package manager
 
 (add-to-list 'load-path dotfiles-dir)
