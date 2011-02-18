@@ -1,12 +1,35 @@
 #!/bin/sh
+#
+# gitignore/gitexclude
+#
+# Operation as gitignore:
+# - traverse upwards until either a .gitignore file is found or
+#   the git repo root is reached (a .git directory is found)
+# - record the directories on the way and prepend to the ignore
+# - add the ignore to the .gitignore file
+# - .gitignore is created in the git repo root if non-existent
+#
+# Operation as gitexclude:
+# - same as gitignore, but add ignore to .git/info/exclude
+
+# we are run as gitignore or gitexclude
+action=`basename $0`
+case "$action" in
+    gitignore)
+        ignorefile=".gitignore"
+        ;;
+    gitexclude)
+        ignorefile=".git/info/exclude"
+        ;;
+esac
 
 function gitignore() {
 	ignore="$1"
 	wd="$2"
 	test -z "$ignore" && return 1
 	test -z "$wd" && wd=$(pwd)
-	if test -f "$wd/.gitignore" || test -d "$wd/.git"; then
-		echo "/$ignore" >> "$wd/.gitignore"
+	if test -f "$wd/$ignorefile" || test -d "$wd/.git"; then
+		echo "/$ignore" >> "$wd/$ignorefile"
 		return 0
 	else
 		ignore="$(basename $wd)/$ignore"

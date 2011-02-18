@@ -1,4 +1,27 @@
-.*.sw[po]
-.#*
-*~
-#*#
+# list of ignores everybody will want or which do not hurt anybody.
+# Add personal ignores to .git/info/exclude
+# e.g:
+# - /[^.]* to ignore all files not starting with a dot
+# - * to ignore all files except if added with --force
+
+# In addition to the ignores defined here and in your
+# .git/info/exclude, also the global ignores from .config/git/exclude
+# are effective.
+
+# specific files
+/.ICEauthority
+/.Xauthority
+/.bash_history
+/.cache/
+/.dbus/
+/.emacs.bmk
+/.esd_auth
+/.fontconfig/
+/.lesshst
+/.nix-defexpr/
+/.nix-profile
+/.ssh
+/.subversion/
+/.thumbnails/
+/.xsession-errors
+/.zsh.history*
