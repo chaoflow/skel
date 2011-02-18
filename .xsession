@@ -14,4 +14,6 @@ xset b off &
 xset +dpms &
 xset dpms 0 0 300 &
 
-exec awesome
+# XXX: hack to fight what feels like a race condition
+# the strace prevents an "Another window manager is already running" error
+strace awesome 2>&1 >/dev/null
