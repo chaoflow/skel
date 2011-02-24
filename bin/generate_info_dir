@@ -1,4 +1,6 @@
 #!/bin/sh
+#
+# XXX: I only exist as a hack to create dir for nixos
 
 target=~/.info/dir
 

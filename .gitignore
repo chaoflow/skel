@@ -13,10 +13,12 @@
 /.Xauthority
 /.bash_history
 /.cache/
+/.capture.org
 /.dbus/
 /.emacs.bmk
 /.esd_auth
 /.fontconfig/
+/.info/
 /.lesshst
 /.nix-defexpr/
 /.nix-profile
@@ -25,5 +27,3 @@
 /.thumbnails/
 /.xsession-errors
 /.zsh.history*
-/.capture.org
-/.info/
