@@ -1,0 +1,19 @@
+#!/bin/sh
+
+target=~/.info/dir
+
+oldIFS=$IFS
+IFS=:
+for info in $INFOPATH; do
+    IFS=$oldIFS
+    if [ -d $info ]; then
+        echo Scanning: $info
+        for x in $info/*; do
+            if [ "$x"foo != "dirfoo" ]; then
+                install-info $x ${target}.new
+                echo added: $x
+            fi
+        done
+    fi
+done
+mv ${target}.new $target
