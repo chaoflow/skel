@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source $HOME/.bashrc
+
 cd
 
 pulseaudio --realtime --start &
@@ -16,4 +18,5 @@ xset dpms 0 0 300 &
 
 # XXX: hack to fight what feels like a race condition
 # the strace prevents an "Another window manager is already running" error
-strace awesome 2>&1 >/dev/null
+#strace awesome >/dev/null 2>&1
+strace awesome
