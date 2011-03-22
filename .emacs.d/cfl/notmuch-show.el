@@ -590,6 +590,8 @@ function is used. "
 	(define-key map "h" 'notmuch-show-toggle-headers)
 	(define-key map "-" 'notmuch-show-remove-tag)
 	(define-key map "+" 'notmuch-show-add-tag)
+        (define-key map "S" 'notmuch-show-mark-spam)
+        (define-key map "z" 'notmuch-show-mute)
 	(define-key map "x" 'notmuch-show-archive-thread-then-exit)
 	(define-key map "a" 'notmuch-show-archive-thread)
 	(define-key map "N" 'notmuch-show-next-message)
@@ -1026,6 +1028,20 @@ the result."
 			   (mapcar (lambda (s) (concat "-" s)) toremove))
 		     (cons (notmuch-show-get-message-id) nil)))
       (notmuch-show-set-tags new-tags))))
+
+(defun notmuch-show-mute ()
+  "Mute the currently selected thread (add \"muted\" tag).
+
+This function advances the next thread when finished."
+  (interactive)
+  (notmuch-show-add-tag "muted")
+  (notmuch-show-archive-thread))
+
+(defun notmuch-show-mark-spam ()
+  "Tag as spam and archive"
+  (interactive)
+  (notmuch-show-add-tag "spam")
+  (notmuch-show-archive-thread))
 
 (defun notmuch-show-toggle-headers ()
   "Toggle the visibility of the current message headers."

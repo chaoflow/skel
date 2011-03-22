@@ -215,9 +215,10 @@ For a mouse binding, return nil."
     (define-key map [mouse-1] 'notmuch-search-show-thread)
     (define-key map "*" 'notmuch-search-operate-all)
     (define-key map "a" 'notmuch-search-archive-thread)
-    (define-key map "z" 'notmuch-search-mute-thread)
+    (define-key map "z" 'notmuch-search-mute)
     (define-key map "-" 'notmuch-search-remove-tag)
     (define-key map "+" 'notmuch-search-add-tag)
+    (define-key map "S" 'notmuch-search-mark-spam)
     (define-key map (kbd "RET") 'notmuch-search-show-thread)
     map)
   "Keymap for \"notmuch search\" buffers.")
@@ -564,13 +565,19 @@ This function advances the next thread when finished."
   (notmuch-search-remove-tag-thread "inbox")
   (forward-line))
 
-(defun notmuch-search-mute-thread ()
+(defun notmuch-search-mute ()
   "Mute the currently selected thread (add \"muted\" tag).
 
 This function advances the next thread when finished."
   (interactive)
-  (notmuch-search-add-tag-thread "muted")
-  (forward-line))
+  (notmuch-search-add-tag "muted")
+  (notmuch-search-archive-thread))
+
+(defun notmuch-search-mark-spam ()
+  "Tag as spam and archive"
+  (interactive)
+  (notmuch-search-add-tag "spam")
+  (notmuch-search-archive-thread))
 
 (defun notmuch-search-process-sentinel (proc msg)
   "Add a message to let user know when \"notmuch search\" exits"
