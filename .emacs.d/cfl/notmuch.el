@@ -579,6 +579,10 @@ This function advances the next thread when finished."
   (notmuch-search-add-tag "spam")
   (notmuch-search-archive-thread))
 
+(defvar notmuch-search-process-filter-data nil
+  "Data that has not yet been processed.")
+(make-variable-buffer-local 'notmuch-search-process-filter-data)
+
 (defun notmuch-search-process-sentinel (proc msg)
   "Add a message to let user know when \"notmuch search\" exits"
   (let ((buffer (process-buffer proc))
@@ -596,6 +600,8 @@ This function advances the next thread when finished."
 		      (insert "Incomplete search results (search process was killed).\n"))
 		  (if (eq status 'exit)
 		      (progn
+			(if notmuch-search-process-filter-data
+			    (insert (concat "Error: Unexpected output from notmuch search:\n" notmuch-search-process-filter-data)))
 			(insert "End of search results.")
 			(if (not (= exit-status 0))
 			    (insert (format " (process returned %d)" exit-status)))
@@ -761,8 +767,12 @@ non-authors is found, assume that all of the authors match."
 	  (save-excursion
 	    (let ((line 0)
 		  (more t)
-		  (inhibit-read-only t))
+		  (inhibit-read-only t)
+		  (string (concat notmuch-search-process-filter-data string)))
+	      (setq notmuch-search-process-filter-data nil)
 	      (while more
+		(while (and (< line (length string)) (= (elt string line) ?\n))
+		  (setq line (1+ line)))
 		(if (string-match "^\\(thread:[0-9A-Fa-f]*\\) \\([^][]*\\) \\(\\[[0-9/]*\\]\\) \\([^;]*\\); \\(.*\\) (\\([^()]*\\))$" string line)
 		    (let* ((thread-id (match-string 1 string))
 			   (date (match-string 2 string))
@@ -772,6 +782,8 @@ non-authors is found, assume that all of the authors match."
 			   (tags (match-string 6 string))
 			   (tag-list (if tags (save-match-data (split-string tags)))))
 		      (goto-char (point-max))
+		      (if (/= (match-beginning 1) line)
+			  (insert (concat "Error: Unexpected output from notmuch search:\n" (substring string line (match-beginning 1)) "\n")))
 		      (let ((beg (point-marker)))
 			(notmuch-search-show-result date count authors subject tags)
 			(notmuch-search-color-line beg (point-marker) tag-list)
@@ -783,7 +795,12 @@ non-authors is found, assume that all of the authors match."
 			      (set 'found-target beg)
 			      (set 'notmuch-search-target-thread "found"))))
 		      (set 'line (match-end 0)))
-		  (set 'more nil)))))
+		  (set 'more nil)
+		  (while (and (< line (length string)) (= (elt string line) ?\n))
+		    (setq line (1+ line)))
+		  (if (< line (length string))
+		      (setq notmuch-search-process-filter-data (substring string line)))
+		  ))))
 	  (if found-target
 	      (goto-char found-target)))
       (delete-process proc))))
