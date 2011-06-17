@@ -1,5 +1,8 @@
 alias buildout='LDFLAGS="-L/nix/var/nix/profiles/system/sw/lib" ./bin/buildout'
 
+alias ec="emacsclient -c"
+alias et="emacsclient -t"
+
 alias grep='grep --color'
 alias gr='grep -R'
 alias gri='gr -i'
