@@ -1,3 +1,4 @@
+(add-to-list 'load-path "~/.nix-profile/share/org/contrib/lisp" )
 (require 'org-install)
 ;; XXX: turned off until we have something that handles multiple
 ;; languages
