@@ -1,6 +1,8 @@
 # XXX: Is it possible to generalize here?
 
-export EDITOR=vim
+export EDITOR="emacsclient -c"
+# this starts emacs --daemon if not running already
+export ALTERNATE_EDITOR=""
 export EMAIL=flo@chaoflow.net
 export FULLNAME="Florian Friesdorf"
 export INFOPATH=~/.info:$INFOPATH
