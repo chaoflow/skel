@@ -2,9 +2,42 @@
 	excludesfile = ~/.config/git/exclude
 
 [color]
-	branch = auto
+	branch = false
 	diff = auto
 	status = auto
+	ui = auto
+
+[color "diff"]
+	plain = normal
+	meta = bold
+	frag = cyan
+	old = white red
+	new = white green
+	commit = yellow
+	whitespace = normal red
+
+[color "branch"]
+	current = normal
+	local = normal
+	remote = red
+	plain = normal
+
+[color "status"]
+	header = normal
+	added = red
+	updated = green
+	changed = white red
+	untracked = white red
+	nobranch = white red
+
+[color "grep"]
+	match = normal
+
+[color "interactive"]
+	prompt = normal
+	header = normal
+	help = normal
+	error = normal
 
 [diff]
 	renames = true
