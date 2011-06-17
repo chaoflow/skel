@@ -11,7 +11,8 @@
 (setq espresso-indent-level 2)
 
 ;; If you prefer js2-mode, use this instead:
-;; (add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
 (eval-after-load 'espresso
   '(progn (define-key espresso-mode-map "{" 'paredit-open-curly)
