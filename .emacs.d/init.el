@@ -71,10 +71,6 @@
 
 (regen-autoloads)
 
-;; load all customization files in order. custom-50_customized.el
-;; contains settings set via customize.
-(mapc #'load (directory-files dotfiles-dir nil "^custom-.*[.]el$"))
-
 ;; You can keep system- or user-specific customizations here
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el")
@@ -85,5 +81,9 @@
 (if (file-exists-p user-specific-config) (load user-specific-config))
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+
+;; load all customization files in order. custom-50_customized.el
+;; contains settings set via customize.
+(mapc #'load (directory-files dotfiles-dir nil "^custom-.*[.]el$"))
 
 ;;; init.el ends here
