@@ -232,8 +232,8 @@ globalkeys = awful.util.table.join(
     --awful.key({}, "XF86Battery", function () exec("") end),
     awful.key({}, "XF86Sleep", function () sexec("slock &; sleep 2s && dbus-send --system --print-reply --dest=org.freedesktop.Hal /org/freedesktop/Hal/devices/computer org.freedesktop.Hal.Device.SystemPowerManagement.Suspend int32:0") end),
     --awful.key({}, "XF86Suspend", function () exec("") end),
-    --awful.key({}, "XF86Display", function () exec("") end),
-    --awful.key({}, "XF86ToupadToggle", function () exec("") end),
+    awful.key({}, "XF86Display", function () sexec("for x in LVDS1 DP1 HDMI1; do xrandr --output $x --auto; done") end),
+    awful.key({}, "XF86TouchpadToggle", function () sexec("init_keyboard.sh") end),
     --awful.key({}, "XF86ScreenSaver", function () exec("slock") end),
     awful.key({}, "XF86ScreenSaver", function () exec("xscreensaver-command -lock") end)
 )
