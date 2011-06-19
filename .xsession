@@ -6,9 +6,7 @@ cd
 
 pulseaudio --realtime --start &
 
-#nm-applet &
 stalonetray &
-wicd-client &
 ./bin/init_keyboard.sh &
 
 # bell off
