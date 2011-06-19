@@ -16,6 +16,9 @@ xset b off &
 xset +dpms &
 xset dpms 0 0 300 &
 
+# background and default cursor
+xsetroot -solid "#100010" -cursor_name left_ptr &
+
 # XXX: hack to fight what feels like a race condition
 # the strace prevents an "Another window manager is already running" error
 #strace awesome >/dev/null 2>&1
