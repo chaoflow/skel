@@ -34,3 +34,4 @@
 /.xmonad/xmonad.errors
 /.xmonad/xmonad.hi
 /.xmonad/xmonad.o
+/.conkeror.mozdev.org/conkeror/*/Cache
