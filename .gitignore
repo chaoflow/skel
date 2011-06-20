@@ -35,3 +35,6 @@
 /.xmonad/xmonad.hi
 /.xmonad/xmonad.o
 /.conkeror.mozdev.org/conkeror/*/Cache
+/.ghc/ghci_history
+/.tramp_history
+/.pip/pip.log
