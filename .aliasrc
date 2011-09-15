@@ -24,6 +24,8 @@ alias lal='lla'
 
 alias p='pushd'
 
+alias query='nix-env -qaP \* |grep -i'
+
 alias rvahp='rsync -vaHP'
 
 alias sgit='sudo git'
