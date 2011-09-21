@@ -10,11 +10,14 @@
         pkgs.libxslt
         pkgs.python26
         pkgs.python26Packages.ipdb
+        pkgs.python26Packages.pip
         pkgs.python26Packages.readline
         pkgs.python26Packages.sqlite3
         pkgs.python26Packages.ssl
         pkgs.subversionClient
+        pkgs.zlib
       ];
+      ignoreCollisions = true;
     };
     Py27Env = pkgs.buildEnv {
       name = "py27env";
