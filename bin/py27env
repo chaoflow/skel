@@ -2,13 +2,13 @@
 
 # XXX: for some reason this variable is not set in here ?!
 NIX_USER_PROFILE_DIR=/nix/var/nix/profiles/per-user/cfl
-nixprofile=$NIX_USER_PROFILE_DIR/py26
+nixprofile=$NIX_USER_PROFILE_DIR/py27
 
 export PATH="$HOME/bin:$nixprofile/bin"
 export LD_LIBRARY_PATH="$nixprofile/lib"
 export NIX_LDFLAGS="-L $nixprofile/lib"
 export NIX_CFLAGS_COMPILE="-I $nixprofile/include"
 export PKG_CONFIG_PATH="$nixprofile/lib/pkgconfig"
-export PYTHONPATH="$nixprofile/lib/python2.6:$nixprofile/lib/python2.6/site-packages"
+export PYTHONPATH="$nixprofile/lib/python2.7:$nixprofile/lib/python2.7/site-packages"
 
 "$@"
