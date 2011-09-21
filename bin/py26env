@@ -9,6 +9,7 @@ export LD_LIBRARY_PATH="$nixprofile/lib"
 export NIX_LDFLAGS="-L $nixprofile/lib"
 export NIX_CFLAGS_COMPILE="-I $nixprofile/include"
 export PKG_CONFIG_PATH="$nixprofile/lib/pkgconfig"
-export PYTHONPATH="$nixprofile/lib/python2.6:$nixprofile/lib/python2.6/site-packages"
+export PYTHONPATH="$nixprofile/lib/python2.6/site-packages"
+export PS1="py26 $PS1"
 
 "$@"

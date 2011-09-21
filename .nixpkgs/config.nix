@@ -9,10 +9,10 @@
         pkgs.libxml2
         pkgs.libxslt
         pkgs.python26
+        pkgs.python26Packages.ipython
         pkgs.python26Packages.readline
         pkgs.python26Packages.sqlite3
         pkgs.python26Packages.ssl
-        pkgs.python26Packages.setuptools
         pkgs.subversionClient
       ];
     };
@@ -24,12 +24,21 @@
         pkgs.libxml2
         pkgs.libxslt
         pkgs.python27
+        pkgs.python26Packages.ipython
         pkgs.python27Packages.readline
         pkgs.python27Packages.sqlite3
         pkgs.python27Packages.ssl
-        pkgs.python27Packages.setuptools
         pkgs.subversionClient
         pkgs.zlib
+      ];
+    };
+    TestEnv = pkgs.buildEnv {
+      name = "testenv";
+      paths = [
+        pkgs.defaultStdenv
+        pkgs.python26
+        pkgs.python26Packages.setuptools
+        pkgs.python26Packages.ipython
       ];
     };
   };
