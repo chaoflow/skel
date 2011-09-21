@@ -25,12 +25,14 @@
         pkgs.libxslt
         pkgs.python27
         pkgs.python27Packages.ipdb
+        pkgs.python27Packages.pip
         pkgs.python27Packages.readline
         pkgs.python27Packages.sqlite3
         pkgs.python27Packages.ssl
         pkgs.subversionClient
         pkgs.zlib
       ];
+      ignoreCollisions = true;
     };
     TestEnv = pkgs.buildEnv {
       name = "testenv";
