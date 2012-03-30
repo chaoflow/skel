@@ -1,50 +1,87 @@
+# This is mostly a work in progress and might not work with what is in
+# nixpkgs trunk. If you have questions, feel free to contact me:
+# Florian Friesdorf <flo@chaoflow.net>
+
 {
+  firefox.jre = true;
+  libreoffice.force = true;
   packageOverrides = pkgs:
   {
-    Py26Env = pkgs.buildEnv {
-      name = "py26env";
+    envPythonPlonedev = pkgs.buildEnv {
+      name = "env-python-plonedev-1.0";
+      paths = with pkgs; [
+        cyrus_sasl
+        db4
+        gitAndTools.gitFull
+        groff
+        libxml2
+        libxslt
+        openssh
+        openssl
+        python27Full
+        python27Packages.ipython
+        python27Packages.site
+        subversionClient
+        stdenv
+      ];
+    };
+
+    pythonWithAll = pkgs.buildEnv {
+      name = "python-with-all";
+      paths = with pkgs; [
+          python27Full
+      ] ++ lib.attrValues (removeAttrs python27Packages [
+          "buildPythonPackage"
+          "fetchurl"
+          "fetchsvn"
+          "python"
+          "stdenv"
+          "wrapPython"
+          # broken
+          "pysvn"
+      ]);
+      ignoreCollisions = true;
+    };
+
+    py27 = pkgs.buildEnv {
+      name = "py27";
+      paths = with pkgs; [
+        cyrus_sasl
+        db4
+        file
+        gitAndTools.gitFull
+        groff
+        pcre
+        libxml2
+        libxslt
+        mercurial
+        openldap
+        openssh
+        openssl
+        pkgconfig
+        postgresql
+        pycrypto
+        python27Full
+        python27Packages.ipython
+        python27Packages.site
+        python27Packages.virtualenv
+        subversionClient
+        stdenv
+        wget
+        zlib
+      ];
+    };
+
+    KernelEnv = pkgs.buildEnv {
+      name = "kernelenv";
       paths = [
         pkgs.defaultStdenv
         pkgs.gitAndTools.gitFull
-        pkgs.libxml2
-        pkgs.libxslt
-        pkgs.python26
-        pkgs.python26Packages.ipdb
-        pkgs.python26Packages.pip
-        pkgs.python26Packages.readline
-        pkgs.python26Packages.sqlite3
-        pkgs.python26Packages.ssl
-        pkgs.subversionClient
-        pkgs.zlib
-      ];
-      ignoreCollisions = true;
-    };
-    Py27Env = pkgs.buildEnv {
-      name = "py27env";
-      paths = [
-        pkgs.defaultStdenv
-        pkgs.gitAndTools.gitFull
-        pkgs.libxml2
-        pkgs.libxslt
-        pkgs.python27
-        pkgs.python27Packages.ipdb
-        pkgs.python27Packages.pip
-        pkgs.python27Packages.readline
-        pkgs.python27Packages.sqlite3
-        pkgs.python27Packages.ssl
-        pkgs.subversionClient
-        pkgs.zlib
-      ];
-      ignoreCollisions = true;
-    };
-    TestEnv = pkgs.buildEnv {
-      name = "testenv";
-      paths = [
-        pkgs.defaultStdenv
-        pkgs.python26
-        pkgs.python26Packages.setuptools
-        pkgs.python26Packages.ipython
+        pkgs.ncurses
       ];
     };
+  };
+  pkgs.pulseaudio = {
+    jackaudioSupport = true;
   };
 }
