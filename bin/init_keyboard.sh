@@ -13,5 +13,4 @@ for id in `xinput list |grep -i trackpoint |cut -d= -f2 |cut -d'	' -f1`; do
 	xinput set-int-prop $id "Evdev Wheel Emulation Timeout" 8 50 2>/dev/null &
 done
 
-# checking out different mouse behaviour
-xset m 3 0 &
+xset m 4 0 &
