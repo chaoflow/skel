@@ -42,7 +42,7 @@ main = do
     ((modMask' .|. shiftMask, xK_r), spawn "chrome"),
     ((modMask' .|. shiftMask, xK_t), spawn "urxvt -e ssh tesla"),
     ((modMask' .|. shiftMask, xK_v), spawn "vlc"),
-    ((modMask' .|. shiftMask, xK_w), spawn "wicd-client -n"),
+    ((modMask' .|. shiftMask, xK_w), spawn "wpa_gui"),
     ((modMask' .|. shiftMask, xK_z), spawn "xlock"),
     ((0, xK_Print), spawn "scrot -e 'mv $f ~/shots/'"),
     ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s -e 'mv $f ~/shots/'")
