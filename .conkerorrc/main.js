@@ -29,6 +29,10 @@ session_pref("signon.expireMasterPassword", false);
 Cc["@mozilla.org/login-manager;1"].getService(Ci.nsILoginManager); // init
 
 
+session_pref('network.proxy.socks',  '127.0.0.1');
+session_pref('network.proxy.socks_port', 6666);
+session_pref('network.proxy.socks_remote_dns', true);
+
 
 // XXX: not working yet
 // http://tsdh.wordpress.com/2008/11/14/calling-org-remember-from-inside-conkeror/
