@@ -1,8 +1,8 @@
 #!/bin/sh
 
-source $HOME/.bashrc
-
-cd
+if test -z $ZSH_VERSION && zsh --version >&/dev/null; then
+    exec zsh -l "$0" "$@"
+fi
 
 pulseaudio --start --realtime -C&
 
@@ -19,7 +19,4 @@ xset dpms 0 0 300 &
 # background and default cursor
 xsetroot -solid "#505050" -cursor_name left_ptr &
 
-# XXX: hack to fight what feels like a race condition
-# the strace prevents an "Another window manager is already running" error
-#strace awesome >/dev/null 2>&1
 exec xmonad
