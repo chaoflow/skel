@@ -12,10 +12,13 @@ doSink = doF . W.sink =<< ask
 
 manageHook' = composeAll [
   --(className =? "Conkeror" <&&> resource =? "Addons") --> doFloat,
+  className =? "Kruler" --> doFloat,
+  className =? "qemu-system-x86_64" --> doFloat,
   className =? "stalonetray" --> doShift "10:attic" <+> doSink,
+  className =? "Skype" --> doFloat,
   className =? "Vlc" --> doFloat,
-  className =? "Xmessage" --> doFloat,
   className =? "Wine" --> doFloat,
+  className =? "Xmessage" --> doFloat,
   stringProperty "WM_NAME" =? "Crack Attack!" --> doFloat,
   stringProperty "WM_NAME" =? "glxgears" --> doFloat
   ]
