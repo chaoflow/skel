@@ -41,5 +41,5 @@ fi
 echo "nixos: $TAG_CMD $TAG $NIXOS_REV"
 (cd nixos && $TAG_CMD $TAG $NIXOS_REV)
 
-echo "nixpkgs: $TAG_CMD $TAG $NIXOS_REV"
+echo "nixpkgs: $TAG_CMD $TAG $NIXPKGS_REV"
 (cd nixpkgs && $TAG_CMD $TAG $NIXPKGS_REV)
