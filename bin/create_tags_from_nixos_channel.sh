@@ -12,7 +12,8 @@ CHANNEL=/nix/var/nix/profiles/per-user/root/channels/nixos
 REV_FILE=$CHANNEL/nixos/svn-revision
 TAG_CMD="git tag"
 
-TAG=nixos-channel-$(cut -d'_' -f1 < $REV_FILE)
+#TAG=nixos-channel-$(cut -d'_' -f1 < $REV_FILE)
+TAG=nixos-channel-$(date +%Y-%m-%d-%H-%M)
 REV_INFO=$(cut -d'_' -f2 < $REV_FILE)
 NIXOS_REV=$(echo $REV_INFO | cut -d'-' -f1)
 NIXPKGS_REV=$(echo $REV_INFO | cut -d'-' -f2)
