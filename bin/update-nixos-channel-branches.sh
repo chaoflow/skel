@@ -11,6 +11,10 @@ BRANCH="channel-nixos"
 UPDATE_CMD="git update-ref refs/heads/$BRANCH"
 PUSH_CMD="git push chaoflow $BRANCH:$BRANCH"
 
+set -x
+sudo -H nix-channel --update
+set +x
+
 # get nixos and nixpkgs revision from channel
 REV_INFO=$(cut -d'_' -f2 < $REV_FILE)
 NIXOS_REV=$(echo $REV_INFO | cut -d'-' -f1)
