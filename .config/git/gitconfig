@@ -58,8 +58,8 @@
 	dwc = diff --cached --color-words
 	lf = log --follow
 	llf = log -p --follow
-	l = log
-	ll = log -p
+	l = log --graph
+	ll = log -p --graph
 	lt = log trunk..
 	llt = log -p trunk..
 	lm = log master..
