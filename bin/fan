@@ -1,0 +1,18 @@
+#!/bin/sh
+
+fan=/proc/acpi/ibm/fan
+
+if [ "$1"foo == foo ]; then
+   cat $fan
+   exit 0
+fi
+
+if [ $USER != "root" ]; then
+   set -x
+   exec sudo $0 $1
+   exit 0
+fi
+
+set -x
+echo level $1 > $fan; echo
+cat $fan
