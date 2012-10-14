@@ -39,7 +39,7 @@ main = do
     ((modMask' .|. shiftMask, xK_k), spawn "conkeror"),
     ((modMask' .|. shiftMask, xK_m), spawn "urxvt -e aumix"),
     ((modMask' .|. shiftMask, xK_o), spawn "urxvt -e offlineimap"),
-    ((modMask' .|. shiftMask, xK_r), spawn "chrome"),
+    ((modMask' .|. shiftMask, xK_r), spawn "chromium"),
     ((modMask' .|. shiftMask, xK_t), spawn "urxvt -e ssh tesla"),
     ((modMask' .|. shiftMask, xK_v), spawn "vlc"),
     ((modMask' .|. shiftMask, xK_w), spawn "wpa_gui"),

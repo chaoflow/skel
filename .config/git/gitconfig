@@ -58,8 +58,8 @@
 	dwc = diff --cached --color-words
 	lf = log --follow
 	llf = log -p --follow
-	l = log --graph
-	ll = log -p --graph
+	l = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ll = log -p --graph --decorate --abbrev-commit --all
 	lt = log trunk..
 	llt = log -p trunk..
 	lm = log master..
