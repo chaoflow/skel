@@ -94,7 +94,13 @@
       paths = with pkgs; [
           python27Full
       ] ++ (lib.filter (v: (v.type or null) == "derivation")
-                       (lib.attrValues python27Packages));
+                       (lib.attrValues (removeAttrs python27Packages
+                                                    [ "offlineDistutils"
+                                                      "recursivePthLoader"
+                                                      "setuptools"
+                                                      "setuptoolsSite"
+                                                    ])));
+      ignoreCollisions = true;
     };
 
     py27 = pkgs.buildEnv {
