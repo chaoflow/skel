@@ -93,7 +93,7 @@
       name = "python-with-all";
       paths = with pkgs; [
           python27Full
-      ] ++ (lib.filter (v: builtins.isAttrs v && v ? type && v.type == "derivation")
+      ] ++ (lib.filter (v: (v.type or null) == "derivation")
                        (lib.attrValues python27Packages));
     };
 
