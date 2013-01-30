@@ -6,7 +6,7 @@
   firefox.jre = true;
   libreoffice.force = true;
   packageOverrides = pkgs:
-  {
+  rec {
     envTex = pkgs.buildEnv {
       name = "mytex";
       paths = with pkgs; [
@@ -89,17 +89,45 @@
       ];
     };
 
-    pythonWithAll = pkgs.buildEnv {
-      name = "python-with-all";
+    # I use these mostly to have an offline copy of all python packages
+    pythonWithAll = pythonWithAll27;
+    pythonWithAll26 = pkgs.buildEnv {
+      name = "python-with-all-2.6";
       paths = with pkgs; [
-          python27Full
+          python26
       ] ++ (lib.filter (v: (v.type or null) == "derivation")
-                       (lib.attrValues (removeAttrs python27Packages
-                                                    [ "offlineDistutils"
-                                                      "recursivePthLoader"
+                       (lib.attrValues (removeAttrs python26Packages
+                                                    [ "recursivePthLoader"
                                                       "setuptools"
                                                       "setuptoolsSite"
                                                     ])));
+      ignoreCollisions = true;
+    };
+    pythonWithAll27 = pkgs.buildEnv {
+      name = "python-with-all-2.7";
+      paths = with pkgs; [
+          python27
+      ] ++ (lib.filter (v: (v.type or null) == "derivation")
+                       (lib.attrValues (removeAttrs python27Packages
+                                                    [ "recursivePthLoader"
+                                                      "setuptools"
+                                                      "setuptoolsSite"
+                                                    ])));
+      ignoreCollisions = true;
+    };
+
+    pytest = pkgs.buildEnv {
+      name = "pytest";
+      paths = with pkgs; [
+        (python27Full.override {
+          extraLibs = [
+            python27Packages.ipython
+          ];
+        })
+        python27Packages.matplotlib
+        python27Packages.nose
+        python27Packages.readline
+      ];
       ignoreCollisions = true;
     };
 
@@ -171,23 +199,18 @@
       ];
     };
 
-    pysidenv = pkgs.buildEnv {
-      name = "pysidenv";
+    pysideenv = pkgs.buildEnv {
+      name = "pysideenv";
       paths = with pkgs; [
         file
         gitAndTools.gitFull
         less
         pyside
         python27Full
-        python27Packages.dateutil # undeclared dep of matplotlib
         python27Packages.ipython
         python27Packages.matplotlib
-        python27Packages.numpy  # undeclared dep of matplotlib
         python27Packages.pyyaml
-        python27Packages.readline
         python27Packages.scipy
-#        python27Packages.site
-        python27Packages.sqlite3
         python27Packages.virtualenv
         qt4
         stdenv
