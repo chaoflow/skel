@@ -1,0 +1,29 @@
+#!/bin/sh
+
+#
+# put in your path and create links for scripts to run
+# e.g: ln -s mrsd_run pylint
+#
+
+PROG=$(basename $0)
+MRSD_ROOT=
+
+mrsd_find_root() {
+    local directory=$1;
+    while test ${directory} != "/"; do
+        if test -e ${directory}/dev.nix; then
+            MRSD_ROOT=${directory}
+            break
+        fi
+        directory=$(dirname "${directory}")
+    done
+}
+
+mrsd_find_root $(pwd)
+
+if test "${MRSD_ROOT}abc" = "abc"; then
+    echo "Error: Could not find mrsd project root!"
+    exit 1
+else
+    exec ${MRSD_ROOT}/bin/${PROG} "$@"
+fi
