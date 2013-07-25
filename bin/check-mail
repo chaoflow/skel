@@ -1,0 +1,5 @@
+#!/bin/sh
+
+dsync -v -c .dsync-maildir.conf -o 'mail_fsync=never' mirror /run/current-system/sw/bin/ssh -C cf1@0x2c.org dsync
+~/bin/postsynchook.sh
+
