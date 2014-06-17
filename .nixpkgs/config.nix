@@ -3,8 +3,15 @@
 # Florian Friesdorf <flo@chaoflow.net>
 
 {
-  firefox.jre = true;
+  allowUnfree = true;
+  chromium.enableGoogleTalkPlugin = true;
+  chromium.enablePepperFlash = true;
+  firefox.jre = false;
+  firefox.enableAdobeFlash = true;
+  firefox.enableGoogleTalkPlugin = true;
+  git.guiSupport = true;
   libreoffice.force = true;
+  pulseaudio = true; # XXX: this recompiles chromium
   packageOverrides = pkgs:
   rec {
     envTex = pkgs.buildEnv {
@@ -166,8 +173,10 @@
     };
 
     starenv = pkgs.buildEnv {
+      ignoreCollisions = true;
       name = "starenv";
       paths = with pkgs; [
+        aespipe
         autoconf
         cyrus_sasl
         db4
@@ -188,11 +197,23 @@
         #pdftk
         pkgconfig
         postgresql
+        (python26Full.override {
+          extraLibs = [
+            python26Packages.pycrypto
+          ] ++ lib.attrValues python26.modules;
+        })
+        (python27Full.override {
+          extraLibs = [
+            python27Packages.pycrypto
+          ] ++ lib.attrValues python27.modules;
+        })
+        python27Packages.virtualenv
         readline
         sqlite
         subversionClient
         stdenv
         tesseract
+        vim
         wget
         xpdf
         zlib
@@ -227,8 +248,5 @@
         pkgs.ncurses
       ];
     };
-  };
-  pkgs.pulseaudio = {
-    jackaudioSupport = true;
   };
 }

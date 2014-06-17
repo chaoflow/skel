@@ -4,9 +4,11 @@ if test -z $ZSH_VERSION && zsh --version >&/dev/null; then
     exec zsh -l "$0" "$@"
 fi
 
-pulseaudio --start --realtime -C&
+#pulseaudio --start --realtime -C&
 
 stalonetray &
+xcompmgr &
+dunst &
 ./bin/init_keyboard.sh &
 
 # bell off

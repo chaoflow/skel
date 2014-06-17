@@ -10,7 +10,9 @@ export FULLNAME="Florian Friesdorf"
 export INFOPATH="~/.info${INFOPATH:+:$INFOPATH}"
 export MOZ_PLUGIN_PATH="~/.nix-profile/lib/mozilla/plugins${MOZ_PLUGIN_PATH:+:MOZ_PLUGIN_PATH}"
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
+export PATH=$HOME/.nodejs/bin:$PATH
 
 if which keychain >/dev/null 2>&1; then
-    eval `keychain --eval --quick --agents gpg,ssh id_dsa 0C45F083`
+    #eval `keychain --eval --quick --agents gpg,ssh id_dsa 0C45F083`
+    eval `keychain --eval --quick --agents gpg,ssh id_dsa`
 fi

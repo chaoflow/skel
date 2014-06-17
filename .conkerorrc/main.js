@@ -9,9 +9,11 @@ xkcd_add_title = true;
 define_key(default_global_keymap, "C-c y", "bury-buffer");
 
 // webjumps
+define_webjump("ix", "https://ixquick.com/do/metasearch.pl?query=%s");
+define_webjump("sp", "https://startpage.com/do/metasearch.pl?query=%s");
 define_webjump("ddg", "https://duckduckgo.com/?q=%s");
 define_webjump("pypi", "http://pypi.python.org/pypi?%3Aaction=search&term=%s&submit=search");
-read_url_handler_list = [read_url_make_default_webjump_handler("ddg")];
+read_url_handler_list = [read_url_make_default_webjump_handler("sp")];
 function possibly_valid_url(str) {
     return (/[\.\/:]/.test(str)) &&
         !(/\S\s+\S/.test(str)) &&
