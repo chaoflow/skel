@@ -1,3 +1,6 @@
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = git@github.com:chaoflow/.emacs.d
+[submodule ".vim"]
+	path = .vim
+	url = git@github.com:chaoflow/.vim.git
