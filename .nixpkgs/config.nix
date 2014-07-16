@@ -29,6 +29,49 @@
       ];
     };
 
+    # ipython sites for some python versions with all wheels
+    ipythonSites = pkgs.buildEnv {
+      name = "ipython-sites";
+      paths = map
+        (python: python.site {
+          name = "ipython-all-wheels";
+          wheels = python.wheels.all.wheels;
+          scriptsFor = [ python.wheels.ipython ];
+          pickPolicy = cur: new: pkgs.lib.versionOlder cur.version new.version;
+
+          # XXX: needed as currently it is not ensured that versioned scripts exist
+          postBuild =
+            "install $out/bin/ipython $out/bin/ipython${python.majorVersion}";
+        })
+        [ pkgs.python27 pkgs.python32 pkgs.python33 pkgs.python34 ];
+
+      # XXX: needed until a story for unversioned scripts is told
+      ignoreCollisions = true;
+    };
+
+    # ipython for some python versions with all wheels, but without the site
+    ipythons = pkgs.buildEnv {
+      name = "ipythons";
+      paths = map
+        (python: python.tool {
+          name = "ipython-all-wheels-${python.majorVersion}";
+          wheel = python.wheels.ipython;
+          wheels = python.wheels.all.wheels;
+          pickPolicy = cur: new: pkgs.lib.versionOlder cur.version new.version;
+
+          # XXX: needed as currently it is not ensured that versioned scripts exist
+          fixupPhase =
+            "install $out/bin/ipython $out/bin/ipython${python.majorVersion}";
+        })
+        [ pkgs.python27 pkgs.python32 pkgs.python33 pkgs.python34 ];
+
+      # XXX: needed until a story for unversioned scripts is told
+      ignoreCollisions = true;
+    };
+
+
+    ### Below here probably outdated things pending review.
+
     envPythonPlonedev = pkgs.buildEnv {
       name = "env-python-plonedev-1.0";
       paths = with pkgs; [
