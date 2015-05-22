@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# XXX make this more robust, with fallback keymap? or check whether keymap exists?
-setxkbmap -model thinkpad60 -layout chaoflow
+setxkbmap -I/home/cfl/.xkb chaoflow -print |xkbcomp -I$HOME/.xkb - $DISPLAY
 xmodmap ~/.Xmodmap &
+
 #xset r rate 250 100 &
 xset r rate 250 35 &
 
