@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap -I/home/cfl/.xkb chaoflow -print |xkbcomp -I$HOME/.xkb - $DISPLAY
+setxkbmap -I$HOME/.xkb chaoflow -print |xkbcomp -I$HOME/.xkb - $DISPLAY
 xmodmap ~/.Xmodmap &
 
 #xset r rate 250 100 &
