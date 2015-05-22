@@ -5,7 +5,7 @@ Fig.latexfonts:		true
 Fig.specialtext:	true
 
 URxvt*color0:           black
-URxvt*background:       black
+URxvt*background:       [92]black
 URxvt*color1:           #800000
 URxvt*color2:           #008000
 URxvt*color3:           #d0d090
@@ -24,6 +24,7 @@ URxvt*color14:          #c0d8f8
 URxvt*color15:          #e0e0e0
 URxvt*cursorColor:      #e0e080
 URxvt*underlineColor:	yellow
+URxvt*depth:            32
 URxvt*loginShell:	false
 URxvt*font:		-*-terminus-medium-*-*-*-16-*-*-*-*-*-iso10646-*
 URxvt*boldFont:		-*-terminus-bold-*-*-*-16-*-*-*-*-*-iso10646-*
